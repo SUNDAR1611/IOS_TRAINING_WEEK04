@@ -17,14 +17,14 @@ class PostViewModel: ObservableObject {
     func fetchPosts() async {
         isLoading = true
         
-
+        try? await Task.sleep(nanoseconds: 1_000_000_000)
+        
         guard let url = URL(string: "https://jsonplaceholder.typicode.com/posts") else {
             self.isLoading = false
             self.errorMessage = "Invalid URL"
             self.showError = true
             return
         }
-
         do {
             let (data, _) = try await URLSession.shared.data(from: url)
             posts = try JSONDecoder().decode([Post].self, from: data)
@@ -32,8 +32,14 @@ class PostViewModel: ObservableObject {
             errorMessage = "Failed to decode data"
             showError = true
         } catch {
+<<<<<<< HEAD
             errorMessage = "Somthing went wrong: \(error.localizedDescription)"
+=======
+            errorMessage = "Somthing went wrong:\(error.localizedDescription)"
+>>>>>>> c318138 (day 3 files added)
             showError = true
+            errorMessage = " now you connect:\(error.localizedDescription)"
+
         }
         isLoading = false
     }
