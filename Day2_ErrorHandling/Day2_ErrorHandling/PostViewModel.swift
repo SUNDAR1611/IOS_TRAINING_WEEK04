@@ -32,7 +32,7 @@ class PostViewModel: ObservableObject {
             errorMessage = "Failed to decode data"
             showError = true
         } catch {
-            errorMessage = "Somthing went wrong:(error.localizedDescription)"
+            errorMessage = "Somthing went wrong: \(error.localizedDescription)"
             showError = true
         }
         isLoading = false
