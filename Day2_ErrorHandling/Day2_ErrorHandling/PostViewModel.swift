@@ -32,11 +32,11 @@ class PostViewModel: ObservableObject {
             errorMessage = "Failed to decode data"
             showError = true
         } catch {
-<<<<<<< HEAD
+
             errorMessage = "Somthing went wrong: \(error.localizedDescription)"
-=======
+
             errorMessage = "Somthing went wrong:\(error.localizedDescription)"
->>>>>>> c318138 (day 3 files added)
+
             showError = true
             errorMessage = " now you connect:\(error.localizedDescription)"
 
