@@ -10,17 +10,19 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         VStack {
-            Image("logo")
+            Image(systemName: "fork.knife.circle")
                             .resizable()
                             .scaledToFit()
                             .foregroundStyle(.blue)
                             .frame(width: 150, height: 150)
                             .padding()
-
             Text("Welcome to the Recipe App")
                 .font(.title).foregroundColor(.black)
                 .padding()
-
+              Text("have the best day and best cooking")
+                .font(.subheadline)
+                .foregroundColor(.gray)
+                .padding()
             Text("TAP Search and explore your favorite recipes")
                 .font(.subheadline)
                 .foregroundColor(.gray)
