@@ -11,6 +11,7 @@ struct ContentView: View {
     @State private var recipeName = ""
     @State private var recipes: [RecipeModel] = []
     let recipeClient = RecipeClient()
+    @State private var errorMessage: String?
     
     var body: some View {
         NavigationView {
@@ -18,13 +19,24 @@ struct ContentView: View {
                 TextField("Enter the Recipe name", text: $recipeName)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .onSubmit {
-                        Task {
-                            do {
-                                recipes = try await recipeClient.searchRecipe(for: recipeName)
-                            } catch {
-                                print(error)
+                            Task {
+                                do {
+                                    recipes = try await recipeClient.searchRecipe(for: recipeName)
+                                    errorMessage = nil
+                                } catch RecipeClient.NetworkError.invalidResponse {
+                                    errorMessage = "Not available."
+                                    recipes = []
+                                } catch {
+                                    errorMessage = "An error occurred."
+                                    recipes = []
+                                }
                             }
                         }
+
+                    if let errorMessage = errorMessage {
+                        Text(errorMessage)
+                            .foregroundColor(.red)
+                            .padding(.bottom)
                     }
 
                 List(recipes) { recipe in
