@@ -11,7 +11,7 @@ struct ContentView: View {
     var body: some View {
         VStack {
             Text("Welcome to the Recipe App")
-                .font(.title).foregroundColor(.blue)
+                .font(.title).foregroundColor(.black)
                 .padding()
 
             Text("TAP Search and explore your favorite recipes")
