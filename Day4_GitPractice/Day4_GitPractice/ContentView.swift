@@ -10,6 +10,10 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         VStack {
+            Image(systemName: "book.fill")
+                .resizable()
+                .frame(width: 80, height: 80)
+                .foregroundColor(.blue)
             Text("Welcome to the Recipe App")
                 .font(.title).foregroundColor(.blue)
                 .padding()
