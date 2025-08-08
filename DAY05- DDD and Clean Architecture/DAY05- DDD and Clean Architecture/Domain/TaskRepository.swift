@@ -11,5 +11,5 @@ protocol TaskRepository {
     func getTasks() -> [Task]
     func addTask(title: String, description: String)
     func deleteTask(id: UUID)
-    func updateTask(_ task: Task) // <-- new method
+    func updateTask(_ task: Task) 
 }
